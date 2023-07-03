@@ -1,8 +1,8 @@
 package org.wustrive.dao.jdbc.dao;
 
 
-import com.xiaoleilu.hutool.convert.Convert;
-import com.xiaoleilu.hutool.util.StrUtil;
+import cn.hutool.core.convert.Convert;
+import cn.hutool.core.util.StrUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
