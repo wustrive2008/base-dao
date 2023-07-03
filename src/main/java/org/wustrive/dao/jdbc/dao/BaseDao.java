@@ -27,14 +27,11 @@ public class BaseDao {
 	@Autowired
 	private NamedParameterJdbcTemplate paraJdbcTemplate;
 
-
 	/**
 	 * GG_USER user = baseDao.queryForBean("select * from GG_USER where id=:id", new GG_USER().setId('aasaaa'));
-	 *
-	 * @param <T>
 	 * @param sql
 	 * @param bean
-	 * @return
+	 * @return 返回结果bean
 	 */
 	public <T> T queryForBean(String sql, BaseBean bean) {
 		List<T> list = this.paraJdbcTemplate.query(sql, bean.getBeanValues(), bean.newMapper());
@@ -50,11 +47,10 @@ public class BaseDao {
 	 * new SqlParameter("id","1dcd7d8483c2434dabbb142a76003df9"),
 	 * new GG_USER());
 	 *
-	 * @param <T>
 	 * @param sql
 	 * @param param
 	 * @param bean
-	 * @return
+	 * @return 返回结果bean
 	 */
 	public <T> T queryForBean(String sql, Map param, BaseBean bean) {
 		List<T> list = this.paraJdbcTemplate.query(sql, param, bean.newMapper());
@@ -79,7 +75,7 @@ public class BaseDao {
 	 *
 	 * @param bean
 	 * @param map
-	 * @return
+	 * @return 返回BaseBean
 	 */
 	private BaseBean map2Bean(BaseBean bean, Map map) {
 		Iterator iterator = map.keySet().iterator();
@@ -126,9 +122,10 @@ public class BaseDao {
 
 
 	/**
+	 * 查询返回List<Map>
 	 * @param sql
 	 * @param param
-	 * @return
+	 * @return List<Map>
 	 */
 	public List<Map> queryForList(String sql, Map param) {
 		List<Map<String, Object>> list = this.paraJdbcTemplate.queryForList(sql, param);
@@ -303,8 +300,10 @@ public class BaseDao {
 	}
 
 	/**
+	 * 执行sql语句
 	 * @param sql
-	 * @param param
+	 * @param paramMap
+	 * @return 返回影响的行数
 	 */
 	public Integer execute(String sql, Map paramMap) {
 		SqlParameterSource source = new MapSqlParameterSource(paramMap);
@@ -315,7 +314,7 @@ public class BaseDao {
 	/**
 	 * 在执行insert操作之后获取最新的ID
 	 *
-	 * @return
+	 * @return 返回最新的ID
 	 */
 	public int getCurrentPK() {
 		return queryForInteger("SELECT @@IDENTITY");
