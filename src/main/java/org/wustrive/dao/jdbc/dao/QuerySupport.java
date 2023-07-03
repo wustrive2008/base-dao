@@ -1,6 +1,6 @@
 package org.wustrive.dao.jdbc.dao;
 
-import com.xiaoleilu.hutool.util.StrUtil;
+import cn.hutool.core.util.StrUtil;
 import org.wustrive.dao.jdbc.BaseCommond;
 import org.wustrive.dao.jdbc.bean.BaseBean;
 import org.springframework.beans.factory.annotation.Autowired;
